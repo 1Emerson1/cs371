@@ -3,7 +3,8 @@
 while($studentline = <STDIN>) {
     chomp($_);
     
-    ($last, $first, $email) = split /, /, $studentline;
+    ($last, $first, $email) = split / *, / *, $studentline;
+        # detects irregular in delimiters, in this ex. the spaces
         # Use ", " as field delimiter to split $studentline
         # into last, first, and email fields.
 
