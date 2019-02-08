@@ -2,6 +2,7 @@
 
 sub help {
     # Using a Perl "heredoc":
+    # multiple line string works too
     $message = <<"END_MSG";
 
     Usage: perl -w perlex5.pl <option> rosterfile

@@ -1,22 +1,22 @@
 # perl-assignment.pl
 
 # Exercise 1 using hash
-# while($word = <STDIN>) {
-#     chomp($word);
-#     $length = length($word);
+while($word = <STDIN>) {
+    chomp($word);
+    $length = length($word);
 
-#     $occurrence{$length}++;
-# }
+    $occurrence{$length}++;
+}
 
-# print "\nWord length \t\t Occurrences \n";
+print "\nWord length \t\t Occurrences \n";
 
-# for(my $i = 1; $i <= (keys %occurrence)+1; $i++) {
-#     if(not exists $occurrence{$i}) {
-#         print "$i \t\t\t 0 \n";
-#     } else {
-#         print "$i \t\t\t $occurrence{$i} \n";
-#     }
-# }
+for(my $i = 1; $i <= (keys %occurrence)+1; $i++) {
+    if(not exists $occurrence{$i}) {
+        print "$i \t\t\t 0 \n";
+    } else {
+        print "$i \t\t\t $occurrence{$i} \n";
+    }
+}
 
 # Problem 2 - print uppercased words
 while($word = <STDIN>) {
