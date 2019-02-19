@@ -19,11 +19,11 @@ for(my $i = 1; $i <= (keys %occurrence)+1; $i++) {
 }
 
 # Problem 2 - print uppercased words
-while($word = <STDIN>) {
-    chomp($word);
+# while($word = <STDIN>) {
+#     chomp($word);
 
-    print "$word\n" if $word =~ /^[A-Z]+$/;
-}
+#     print "$word\n" if $word =~ /^[A-Z]+$/;
+# }
 
 # Problem 3 - correcting delimiter
 # while($line = <STDIN>) {
