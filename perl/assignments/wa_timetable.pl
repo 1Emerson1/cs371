@@ -2,7 +2,7 @@
 use WWW::Mechanize;
 
 my @terms;
-my @subjects;
+my %subjects;
 
 # subroutine
 sub help {
@@ -29,7 +29,7 @@ sub terms {
 }# end term()
 
 sub subjects {
-    foreach my $subject (sort @subjects) {
+    foreach my $subject (sort %subjects) {
         print "$subject\n"
     }
 }# end subjects()
@@ -43,7 +43,7 @@ sub timetable {
     }
 
     if(length $subject) {
-        if(grep {$_ eq $subject} @subjects) {
+        if(grep {$_ eq $subject} %subjects) {
             $mech->field("_ctl0:MainContent:ddlSubj_1", $subject);
         }
     }
@@ -73,9 +73,8 @@ my $page = $mech->content();
 # iteriate through HTML file
 @terms = $page =~/<option value="19?.+\/.+">(.+)<\/option>/g;
 
-@subjects = $page =~/<option value="[A-Z]+">(.+\s\([A-Z]{2}\))<\/option>/g; 
-# removes duplicates
-@subjects = keys {map {$_ => 1} @subjects};
+# use hash to remove duplicates
+%subjects = map { /<option value="[A-Z]+">(.+\s\([A-Z]{2}\))<\/option>/g } $page; 
 
 my $numargs = $#ARGV+1;
 if($numargs eq 0 || $ARGV[0] =~ /^-h/) {
