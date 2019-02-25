@@ -1,0 +1,200 @@
+Name: Emerson Hidalgo
+
+CS-371: Scripting Languages
+Spring 2019
+Perl Quiz
+
+Insert your name above.
+
+Insert your answers in this quiz file using a plain text editor. Word documents and .rtf
+files will be rejected.
+
+Use ecampus to dropbox this quiz file plus any additional files by 2pm, Monday, 2/25/19.
+
+*******************************************************************************
+
+Problem 1: (9 points)
+
+See the following Perl code and insert your answers below.
+A beginning Perl programmer wrote the following program:
+
+
+         $verylongvarname = 10;
+
+         # increment $verylongvarname by 1:
+         $verylongvarnaem = $verylongvarname + 1;
+
+         # print incremented $verylongvarname:
+         print "\$verylongvarname:  $verylongvarname";
+
+
+a) Yes, there is an error in the above program. What was the intended
+   output? What was the actual output? (Assume the program is run with
+   the command 'perl progname.pl'.)
+
+   intended output: $verylongvarname:  11
+
+   actual output: $verylongvarname:  10
+
+
+b) How does this situation expose a potential drawback of the
+   dynamic or "weak" type system that programming languages such as
+   Perl provide? (50 words minimum)
+
+One of the drawbacks is the ability to loosely type variables. This allows for quick 
+assignment without the need of initialization. Perl and other dynamic programming languages 
+usually do not include variable safety and checking. Variables can hold data types that are not 
+coherent to its initialization. If variables are not maintained correctly, it can lead to 
+undefined or reference errors. 
+
+
+c) How would the use of the "use strict;" directive help in this
+   situation?
+
+That directive would prevent the program from compiling and require all 
+initial variables to be defined with "my". This will enforce variable integrity. 
+
+
+d) How would the use of the "-w" (warnings) flag help when running this
+   buggy program?  (i.e. perl -w programname.pl)
+
+The warning flag enables warning messages to be shown. Without this flag, it will hide any
+errors that may occur. The message provides the warning type and which line it occurred. 
+
+
+*******************************************************************************
+
+Problem 2: (8 points)
+
+a) What is the differences between the 'chop' and 'chomp' Perl statements?
+
+Chop and chomp share a similar behavior, both remove a certain character from the end 
+of a string. Chop removes the last character at the end of the string. Chomp only removes new 
+line characters.
+
+
+b) See the following statement.
+
+      my ($last, $first, $email) = split /\s+/, $student;
+
+   Assume $student contains the string
+
+         "Alpaugh, Weldon  s0396012\@monmouth.edu"
+
+   What Perl data type does the above 'split' function return? (select
+   one)
+
+      (A) regular expression
+
+      (B) list +
+
+      (C) hash
+
+      (D) string
+
+
+c) If "\s+" is a regular expression, which of the following strings
+   would contain a match for \s+ ? (Select all that apply. Ignore all
+   characters before "Alpaugh" and after ".edu".)
+
+      (A) Alpaugh, Weldon, s0396012@monmouth.edu +
+
+      (B) Alpaugh,Weldon,s0396012@monmouth.edu
+
+      (C) Alpaugh,      Weldon,      s0396012@monmouth.edu +
+
+      (D) Alpaugh,      Weldon,s0396012@monmouth.edu +
+
+
+d) As a result of the above 'split' statement in part b), the variable $last
+   will contain "Alpaugh,".  How could the 'split' statement be changed to
+   avoid including a comma in $last?
+
+Changing the regular expression to /,?\s/ will prevent the comma from being included.
+The regex will first look for the next optional comma. If it does not exist then 
+it will search for the next space(s).                                                        
+
+
+*******************************************************************************
+
+Problem 3: (8 points)
+
+For each of the following, write one value for the variable on the left that will result
+in a successful regular expression match:
+
+a) $country =~ /ia$/
+
+      I.e., if $country is ________________, this regular expression match would
+      resolve to true.
+   
+   $country = Romania
+
+
+b) $poss =~ /'s$/
+
+   $poss = Emerson's
+
+
+c) $var1 =~ /[^AaEeIiOoUu]{2}/
+
+   $var1 = by
+
+
+d) $var2 =~ /^.{1,3}$/
+
+   $var2 = 532
+
+
+e) $pin =~ /^[0-9]{4}$/
+
+   $pin = 1732
+
+
+f) $hecks =~ /[A-F0-9][A-F0-9]+/
+
+   $hecks = F1A977A
+
+
+g) $someone =~ /^Bu(bb|dd)(a|y)$/
+
+   $someone = Bubba
+
+
+h) $animal =~ /^\w{6}$/
+
+   $animal = koalas
+
+
+*******************************************************************************
+
+Problem 4: (8 points)
+
+You should have a file called 'english.sorted' from previous Perl
+exercises. If not, get it from Piazza -> General Resources.
+
+Write and save the program 'quiz_p4.pl' to find all words in
+'english.sorted' that begin with a non-vowel uppercase letter (*), and
+to push those words into the array @upcase. You must use regular
+expression matching and no more than one 'if' structure. Print the
+contents of @upcase.
+
+You must use <STDIN> to read english.sorted.
+
+(*) Vowels don't include Y.
+
+
+*******************************************************************************
+
+Extra Credit: (+1 points maximum)
+
+Write and save the program 'quiz_ec.pl' to output all words in
+'english.sorted' that contain a run of 6 or more consecutive non-vowel
+characters, where vowels are A, E, I, O, U or Y (case insensitive). You must
+use regular expression matching. You will get no credit for a program that
+uses a giant 'if/elsif/else' or 'switch' structure. Correct output from the
+program includes words like:
+
+         Knightsbridge
+         oughtn't
+
+For this program, you must chomp before doing regular expression matching.

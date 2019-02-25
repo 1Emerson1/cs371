@@ -21,5 +21,3 @@ for(my $i = 1; $i <= $#wordlengths; $i++) {
 }
 
 # creating arrays on the fly is convinence but has some problems
-
-

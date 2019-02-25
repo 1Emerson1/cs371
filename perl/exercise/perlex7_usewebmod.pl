@@ -24,4 +24,3 @@ foreach my $a (@anchors) {
 }
 
 print "There are ", $#anames + 1, " anchor names.\n";
-

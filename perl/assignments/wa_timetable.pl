@@ -1,4 +1,9 @@
 # wa_timetable.pl - Perl Project
+
+# Emerson Hidalgo
+# Kyle Frankenbush
+# Ty Corneiro
+
 use WWW::Mechanize;
 
 my @terms;
@@ -35,16 +40,21 @@ sub subjects {
 }# end subjects()
 
 sub timetable {
+    # access parameters
     my $term = $_[0];
     my $subject = $_[1];
 
     if(grep {$_ eq $term} @terms) {
         $mech->field("_ctl0:MainContent:ddlTerm", $term);
+    } else {
+        die "Term is not available\n";
     }
 
     if(length $subject) {
         if(grep {$_ eq $subject} %subjects) {
             $mech->field("_ctl0:MainContent:ddlSubj_1", $subject);
+        } else {
+            die "Subject is not available\n";
         }
     }
     
@@ -56,7 +66,7 @@ sub timetable {
 
     # checks returned page for valid search results
     if($page =~ />(No classes meeting the search criteria have been found.)</g) {
-        print "No classes meeting the search criteria have been found.\n";
+        die "No classes meeting the search criteria have been found.\n";
     } else {
         print $page;
     }
