@@ -1,0 +1,53 @@
+1. Describe Python's equivalent (or near equivalent) of Perl's 'use strict;' pragma. Describe Python's equivalent (or near equivalent) of Perl's '-w' runtime option. List the information source(s) you used in your answer.
+
+
+Python does not have an equivalent of Perl’s ‘use strict;’. Instead it has some precautions built-in. It is still a weak-type programming language meaning it allows variables to be created on-the-fly and hold any data type. One precaution is, the scope of a variable is local by default; compared to global by default in Python. If it accessed outside of the scope, a compile error will be returned.
+
+Python does have a warnings module (import warnings) that can be imported in the source code. This allows for custom warning messages to be implmented. Python has a warning control that can be enabled by using the -W flag. 
+
+References: https://stackoverflow.com/questions/13425715/does-python-have-a-use-strict-and-use-warnings-like-in-perl
+
+2. Reproduce Perl exercise 4 in Python. Save it as roster_dictionary.py. Include the source code in python_assignment.txt.
+
+# roster_dictionary.py
+import sys
+import re
+
+file = open("roster.txt", "r")
+
+roster = {}
+pattern = re.compile(r',\s+')
+for line in file.readlines():
+    # remove next line character
+    line = line.rstrip()
+    # split line into list
+    student = pattern.split(line)
+    # set key
+    roster[student[1]+' '+student[0]] = student[2]
+
+# prints dictionary sorted
+for student in sorted (roster):
+    print ("%s %s" % (student, roster[student]))
+
+3. Write a Python program, roster_fields.py, that reads an old webadvisor roster file as input and writes information to an output file called roster.txt in the following format:
+last name, first name & middle initial, student id, major, year, advisor
+e.g.,
+Rasa, Anthony R., 0835211, HLS, 03, J. Comiskey
+Include the source code in python_assignment.txt.
+
+# roster_fields.py
+import sys
+import re
+
+input_file = open("cs176roster.webadvisor.txt", "r")
+output_file = open("roster.txt", "w")
+roster = input_file.read()
+
+pattern = re.compile('\n\n')
+roster = pattern.split(roster)
+
+pattern = re.compile('\n')
+for line in roster:
+    line = pattern.split(line)
+    output_file.write("%s, %s, %s, %s, %s\n" % (line[0], line[1], line [3], line[4], line[5]))
+output_file.close()

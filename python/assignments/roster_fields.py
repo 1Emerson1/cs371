@@ -14,3 +14,4 @@ for line in roster:
     line = pattern.split(line)
     output_file.write("%s, %s, %s, %s, %s\n" % (line[0], line[1], line [3], line[4], line[5]))
 
+output_file.close()
