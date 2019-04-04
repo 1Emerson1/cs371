@@ -12,6 +12,9 @@ munews__soup = bs4.BeautifulSoup(html_contents, "lxml")
 
 articles = munews__soup.select('article') # list of bs4 tag objects
 
+for article in articles:
+    print (article)
+
 titles = []
 # print the title
 for article in articles:         # each article is a dictionary
@@ -26,4 +29,4 @@ for article in articles:
 
 # make newsfeed dictionary using a list comprehension
 newsfeed = dict( [(titles[i], links[i]) for i in range(len(titles))] )
-print (newsfeed)
+#print (newsfeed)
