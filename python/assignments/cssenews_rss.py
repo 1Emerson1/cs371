@@ -59,13 +59,15 @@ for anchor in munews.find_all("a", class_="anchorMargin"):
 # descriptions
 desc_pattern = re.compile(r"[0-9]{1,2}\/[0-9]{1,2}\/[0-9]{2}(?![0-9]+)")
 
-# removing unneccessary newline characters
+    # removing unneccessary newline characters
 article = re.sub("\n+", "\n", article.get_text())
 desc = desc_pattern.split(article)
 del desc[0]
 
-# rss object
+for i in range(len(desc)):
+    desc[i] = limitwords(desc[i])
 
+# rss object
 rss = PyRSS2Gen.RSS2 (
     title = "Monmouth University CSSE News and Events",
     link = "http://rockhopper.monmouth.edu/~s1049128/cssenews.rss.xml",
