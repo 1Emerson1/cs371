@@ -67,6 +67,8 @@ del desc[0]
 for i in range(len(desc)):
     desc[i] = limitwords(desc[i])
 
+print (len(desc))
+
 # rss object
 rss = PyRSS2Gen.RSS2 (
     title = "Monmouth University CSSE News and Events",

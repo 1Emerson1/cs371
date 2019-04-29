@@ -1,0 +1,10 @@
+{
+    "sshfs.configs": [
+        {
+            "host": "aristotleii.monmouth.edu",
+            "name": "aristotleii-mu",
+            "password": "6749893",
+            "username": "s1049128"
+        }
+    ]
+}
